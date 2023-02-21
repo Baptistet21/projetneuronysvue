@@ -1,26 +1,53 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Authenticator :login-mechanisms="['name']" style="margin-top: 10%">
+  <div v-if="currentUser">
+    <Bar :currentUser="currentUser" />
+    <div class="App">
+      <router-view />
+    </div>
+  </div>
+
+  </Authenticator>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import {Authenticator} from "@aws-amplify/ui-vue";
+import "@aws-amplify/ui-vue/styles.css"
+import { Auth } from "aws-amplify";
+import { Amplify } from 'aws-amplify';
+import config from './aws-exports';
+import Bar from "./components/Bar.vue";
+import Reclamation from "./components/Reclamation.vue";
+import Rattachement from "./components/Rattachement.vue";
+import Upgrade from "./components/Upgrade.vue";
+
+Amplify.configure(config);
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
-</script>
+    Authenticator,
+    Bar,
 
+  },
+  data() {
+    return {
+      currentUser: undefined
+    };
+  },
+  async created() {
+    this.currentUser = await Auth.currentAuthenticatedUser();
+  },
+  routes: [
+    { path: '/reclamation', component: Reclamation },
+    { path: '/rattachement', component: Rattachement },
+    { path: '/upgrade', component: Upgrade }
+  ]
+};
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
+
+
+

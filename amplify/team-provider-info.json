@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-projetneuronysvue-dev-141352-authRole",
+      "UnauthRoleArn": "arn:aws:iam::525468443880:role/amplify-projetneuronysvue-dev-141352-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::525468443880:role/amplify-projetneuronysvue-dev-141352-authRole",
+      "Region": "eu-west-3",
+      "DeploymentBucketName": "amplify-projetneuronysvue-dev-141352-deployment",
+      "UnauthRoleName": "amplify-projetneuronysvue-dev-141352-unauthRole",
+      "StackName": "amplify-projetneuronysvue-dev-141352",
+      "StackId": "arn:aws:cloudformation:eu-west-3:525468443880:stack/amplify-projetneuronysvue-dev-141352/6f997a60-a7b2-11ed-92c4-0afca98c56d4",
+      "AmplifyAppId": "d2dvz7arq0elmo"
+    },
+    "categories": {
+      "auth": {
+        "projetneuronysvue4ea796af": {}
+      },
+      "api": {
+        "projetneuronysvue": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "projetneuronysvue",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authprojetneuronysvue4ea796af",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

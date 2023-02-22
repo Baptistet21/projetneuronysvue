@@ -43,7 +43,9 @@ h2 {
 
 h1{
     font-family: fantasy  ;
-    font-weight: 600 }
+    font-weight: 600;
+    color:#537BE5;
+    text-align: center}
 
 h3 {
     text-align: center;
@@ -60,3 +62,12 @@ div.Bar {
     justify-content: space-between;
 }
 
+form{
+    text-align: center;
+}
+
+div.button{
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;}

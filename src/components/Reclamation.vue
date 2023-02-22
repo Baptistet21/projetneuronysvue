@@ -1,18 +1,19 @@
 <template>
   <div class="Reclamation">
 <h1>Reclamation</h1>
-<form>
-  <input type="email" placeholder="User Email" required>
+<form @submit.prevent="handleSubmit">
+  <input type="email" placeholder="User Email" v-model="email" required>
   <button type="submit">OK</button>
 </form>
-  <br>
-    <h1>users</h1>
-
+    {{email}}
+    <br>
+    <Users :idUser="id" />
     <br>
   <form>
-    <input type="number" placeholder="Credits">
-    <button>Ajouter les credits</button>
+    <input type="number" placeholder="Credits" v-model="creditUpdate">
+    <button @click="updateOrgaCredits">Ajouter les credits</button>
   </form>
+    {{creditUpdate}}
   </div>
 
 
@@ -23,9 +24,12 @@
 import {API, graphqlOperation} from "aws-amplify";
 import query from "@/Fonction_graphql/query";
 import mutation from "@/Fonction_graphql/mutation";
-
+import Users from "@/components/Users.vue";
 export default {
   name: "ReclamationVue",
+  components: {
+    Users
+  },
   data() {
     return {
       email: "",

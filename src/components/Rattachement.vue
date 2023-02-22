@@ -15,11 +15,11 @@
       <button type="submit">Valider</button>
     </form>
     <br><br>
-    <h1>users</h1>
+    <users />
     <br>
     <h2>Organisation Join</h2>
     <ul>
-      <h1>Organisation</h1>
+      <OrgaJoin/>
     </ul>
     <br>
     <div class="button">
@@ -32,8 +32,14 @@
 </template>
 
 <script>
+import users from "@/components/Users.vue";
+import OrgaJoin from "@/components/OrgaJoin.vue";
 export default {
-  name: 'RattachementVue'
+  name: 'RattachementVue',
+  components:{
+    OrgaJoin,
+    users
+  }
 }
 </script>
 

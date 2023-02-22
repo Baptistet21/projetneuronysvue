@@ -2,9 +2,8 @@
   <div>
     <h2>User :</h2>
     <ul>
-      {{idUser}}
       <li :key="user.id">
-        <h4>email: {{ user }}</h4>
+        <h4>email: {{ user.email }}</h4>
         <p>pseudo: {{ user.pseudo }}</p>
         <p>orga_rank: {{ user.orga_rank }}</p>
       </li>
@@ -25,7 +24,7 @@
 </template>
 
 <script>
-import {API, graphqlOperation} from 'aws-amplify';
+import { API, graphqlOperation } from 'aws-amplify';
 import query from '../Fonction_graphql/query';
 
 export default {
@@ -38,23 +37,28 @@ export default {
   },
   data() {
     return {
-      user: [],
-      orga: [],
+      user: {},
+      orga: {},
     };
   },
-  async method() {
-      console.log("getUser",this.getUser())
-
+  mounted() {
+    if (this.idUser > 0) {
+      this.getUser();
+    }
+  },
+  watch: {
+    idUser() {
+      this.getUser();
+    },
   },
   methods: {
     async getUser() {
-        const response = await API.graphql(graphqlOperation(query.getUserOrga(this.idUser)))
-        console.log(response)
-        const userList = response.data.getUser;
-        const orgaList = response.data.getUser.orga;
-        this.user = userList;
-        this.orga = orgaList;
-
+      const response = await API.graphql(graphqlOperation(query.getUserOrga(this.idUser)))
+      console.log(response)
+      const userList = response.data.getUser;
+      const orgaList = response.data.getUser.orga;
+      this.user = userList;
+      this.orga = orgaList;
     },
   },
 };

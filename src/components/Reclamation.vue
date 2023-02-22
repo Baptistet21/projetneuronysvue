@@ -8,10 +8,6 @@
     <br>
     <Users :idUser="id" />
     <br>
-    {{credit}}
-    {{id}}
-    {{orgaId}}
-    {{TypeRankUser}}
   <form>
     <input type="number" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
     <button @click="updateOrgaCredits">Ajouter les credits</button>
@@ -48,10 +44,11 @@ export default {
       if (this.TypeRankUser === "admin") {
         const creditsValid = this.credit + this.creditUpdate;
         await API.graphql(
-            graphqlOperation(mutation.updateCredits(this.orgaId, creditsValid))
+            graphqlOperation(mutation.updateCredits(this.orgaId,creditsValid))
         );
         window.alert(this.name + " a maintenant " + creditsValid + " credits");
         window.location.reload();
+
       } else {
         window.alert(this.name + " n'est pas admin ");
         window.location.reload();

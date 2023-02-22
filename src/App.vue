@@ -18,9 +18,6 @@ import { Auth } from "aws-amplify";
 import { Amplify } from 'aws-amplify';
 import config from './aws-exports';
 import Bar from "./components/Bar.vue";
-import Reclamation from "./components/Reclamation.vue";
-import Rattachement from "./components/Rattachement.vue";
-import Upgrade from "./components/Upgrade.vue";
 
 Amplify.configure(config);
 
@@ -34,16 +31,17 @@ export default {
     return {
       currentUser: undefined
     };
+
   },
   async created() {
     this.currentUser = await Auth.currentAuthenticatedUser();
   },
-  routes: [
-    { path: '/reclamation', component: Reclamation },
-    { path: '/rattachement', component: Rattachement },
-    { path: '/upgrade', component: Upgrade }
-  ]
+
+
 };
+
+
+
 </script>
 <style>
 

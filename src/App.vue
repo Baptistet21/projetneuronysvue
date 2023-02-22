@@ -2,9 +2,7 @@
     <Authenticator :login-mechanisms="['name']" style="margin-top: 10%">
   <div v-if="currentUser">
     <Bar :currentUser="currentUser" />
-    <div class="App">
       <router-view />
-    </div>
   </div>
 
   </Authenticator>

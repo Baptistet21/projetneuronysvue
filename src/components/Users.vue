@@ -2,8 +2,9 @@
   <div>
     <h2>User :</h2>
     <ul>
-      <li v-if="user">
-        <h4>email: {{ user.email }}</h4>
+      {{idUser}}
+      <li :key="user.id">
+        <h4>email: {{ user }}</h4>
         <p>pseudo: {{ user.pseudo }}</p>
         <p>orga_rank: {{ user.orga_rank }}</p>
       </li>
@@ -11,7 +12,7 @@
     <br />
     <h2>Organisation :</h2>
     <ul>
-      <li v-if="orga">
+      <li :key="orga.id">
         <h4>Organisation name: {{ orga.name }}</h4>
         <p>credits: {{ orga.credits }}</p>
         <p>orga_type: {{ orga.orga_type }}</p>
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import { API, graphqlOperation } from 'aws-amplify';
+import {API, graphqlOperation} from 'aws-amplify';
 import query from '../Fonction_graphql/query';
 
 export default {
@@ -37,32 +38,23 @@ export default {
   },
   data() {
     return {
-      user: null,
-      orga: null,
+      user: [],
+      orga: [],
     };
   },
-  async mounted() {
-    await this.getUser();
-  },
-  watch: {
-    idUser() {
-      this.getUser();
-    },
+  async method() {
+      console.log("getUser",this.getUser())
+
   },
   methods: {
     async getUser() {
-      try {
-        const response = await API.graphql(
-            graphqlOperation(query.getUserOrga, { id: this.idUser })
-        );
-        const user = response.data.getUser;
-        const orga = response.data.getUser.orga;
-        this.user = user;
-        this.orga = orga;
-      } catch (error) {
-        console.error(error);
-        // Handle error as needed
-      }
+        const response = await API.graphql(graphqlOperation(query.getUserOrga(this.idUser)))
+        console.log(response)
+        const userList = response.data.getUser;
+        const orgaList = response.data.getUser.orga;
+        this.user = userList;
+        this.orga = orgaList;
+
     },
   },
 };

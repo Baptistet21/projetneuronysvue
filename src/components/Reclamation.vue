@@ -2,18 +2,20 @@
   <div class="Reclamation">
 <h1>Reclamation</h1>
 <form @submit.prevent="handleSubmit">
-  <input type="email" placeholder="User Email" v-model="email" required>
+  <input type="email" placeholder="User Email" id="email" v-model="email" required>
   <button type="submit">OK</button>
 </form>
-    {{email}}
     <br>
     <Users :idUser="id" />
     <br>
+    {{credit}}
+    {{id}}
+    {{orgaId}}
+    {{TypeRankUser}}
   <form>
-    <input type="number" placeholder="Credits" v-model="creditUpdate">
+    <input type="number" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
     <button @click="updateOrgaCredits">Ajouter les credits</button>
   </form>
-    {{creditUpdate}}
   </div>
 
 
@@ -57,7 +59,7 @@ export default {
     },
     async getId() {
       const response = await API.graphql(
-          graphqlOperation(query.getIdByName(this.name))
+          graphqlOperation(query.getIdByName(this.email))
       );
       const idList = response.data.byEmail.items.map((item) => item.id);
       const RankList = response.data.byEmail.items.map(
@@ -69,7 +71,7 @@ export default {
     },
     async getCredit() {
       const response = await API.graphql(
-          graphqlOperation(query.getIdByName(this.name))
+          graphqlOperation(query.getIdByName(this.email))
       );
       const creditList = response.data.byEmail.items.map(
           (item) => item.orga.credits
@@ -79,7 +81,7 @@ export default {
     },
     async getOrgaId() {
       const response = await API.graphql(
-          graphqlOperation(query.getIdByName(this.name))
+          graphqlOperation(query.getIdByName(this.email))
       );
       const IdList = response.data.byEmail.items.map((item) => item.orga.id);
       this.orgaId = IdList[0];

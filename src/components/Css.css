@@ -1,4 +1,6 @@
+* {
 
+}
 ul {
     list-style-type: none;
     margin: 0;
@@ -7,7 +9,6 @@ ul {
     border: 1px solid #e7e7e7;
     background-color: #f3f3f3;
     color:#099ac8;
-    font-size: 20px;
 }
 
 li {
@@ -22,15 +23,19 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-size: 80%;
+
 }
 
 li a:hover:not(.active) {
     background-color: #ddd;
+    font-size: 80%;
 }
 
 li a.active {
     color: white;
     background-color: #04AA6D;
+    font-size: 80%;
 }
 
 h2 {
@@ -38,20 +43,24 @@ h2 {
     margin-left: 5%;
     color: #e88b01;
     font-family: fantasy ;
-    font-weight: 300
+    font-weight: 300;
+    font-size: 80%;
 }
 
 h1{
     font-family: fantasy  ;
     font-weight: 600;
     color:#537BE5;
-    text-align: center}
+    text-align: center;
+    font-size: 80%;
+}
 
 h3 {
     text-align: center;
     color: #e88b01;
     font-family: fantasy ;
-    font-weight: 100
+    font-weight: 100;
+    font-size: 80%;
 }
 
 div.Bar {
@@ -60,14 +69,29 @@ div.Bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 80%;
 }
 
 form{
     text-align: center;
+    font-size: 80%;
 }
 
 div.button{
     height: 200px;
     display: flex;
     align-items: center;
-    justify-content: center;}
+    justify-content: center;
+    font-size: 80%;}
+
+form {
+    transform: scale(0.8);
+}
+
+p{
+    font-size: 80%;
+}
+
+h4{
+    font-size: 80%;
+}

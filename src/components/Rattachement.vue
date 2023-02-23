@@ -21,7 +21,7 @@
     </div>
     <br>
       <div>
-        <OrgaJoin v-if="this.idOrga" :idUser="this.idOrga" />
+        <OrgaJoin v-if="this.idOrga" :id="this.idOrga" />
         <h3 v-else>Aucune organisation trouvée</h3>
       </div>
     Users:

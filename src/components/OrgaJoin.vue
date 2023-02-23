@@ -21,8 +21,8 @@ export default {
   name: "OrgaJoin",
   props: {
     id: {
-      type: Number,
-      required: true
+      type: String,
+      required: true,
     },
   },
   data() {
@@ -31,7 +31,7 @@ export default {
     };
   },
   mounted() {
-    if (this.id !==0){
+    if (this.id !== ""){
       this.getOrganisation();
     }
   },

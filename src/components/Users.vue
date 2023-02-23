@@ -43,7 +43,7 @@ export default {
     };
   },
   mounted() {
-    if (this.idUser > 0) {
+    if (this.idUser !== "") {
       this.getUser();
     }
   },

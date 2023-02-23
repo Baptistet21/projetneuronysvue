@@ -1,4 +1,6 @@
 <template>
+  <h2>Organisation Join :</h2>
+  <ul>
   <div>
     <div v-for="item in orgaJoin" :key="item.id">
       <h4>Organisation name : {{ item.name }}</h4>
@@ -8,6 +10,7 @@
       <p>Users ID : {{ item.users_id }}</p>
     </div>
   </div>
+  </ul>
 </template>
 <script>
 import {graphqlOperation} from "@aws-amplify/api-graphql";

@@ -6,12 +6,12 @@
       <button type="submit">OK</button>
     </form>
     <br>
-    <form>
-      <input type="text" placeholder="Organisation Name" required>
+    <form @submit.prevent="handleSubmit2">
+      <input type="text" placeholder="Organisation Name" id="orga" v-model="orga" required>
       <button type="submit">OK</button>
     </form>
     <br>
-    <form>
+    <form @submit.prevent="handleSubmit3">
       <button type="submit">Valider</button>
     </form>
     <br><br>
@@ -20,19 +20,19 @@
       <h3 v-else>Aucun utilisateur trouvé</h3>
     </div>
     <br>
-    <h2>Organisation Join</h2>
-    <ul>
       <div>
         <OrgaJoin v-if="this.idOrga" :idUser="this.idOrga" />
         <h3 v-else>Aucune organisation trouvée</h3>
       </div>
-    </ul>
-{{idUser}}
+    Users:
+    {{idUser}}
     {{creditsUser}}
     {{idOrgaUser}}
     {{TypeOrgaUser}}
-
-
+    Orga:
+    {{idOrga}}
+    {{creditsOrga}}
+    {{TypeOrgaJoin}}
     <br>
     <div class="button">
       <button>Confirmer</button>
@@ -104,10 +104,36 @@ export default {
 
       return this.creditsUser;
     },
+    /* recuperer info organisation donc id credits et type orga*/
+
+    async getInfoOrga(){
+      const response = await API.graphql(graphqlOperation(query.getOrgaIdByName(this.orga)));
+      console.log(response)
+      /*recup orga orga join*/
+      const orgaList = response.data.listOrganisations.items.map(item => item.id);
+      this.idOrga=orgaList[0];
+
+      /*recup id credits join*/
+      const creditsList = response.data.listOrganisations.items.map(item => item.credits);
+      this.creditsOrga=creditsList[0];
+
+      /*recup Type orga join*/
+      const TypeList = response.data.listOrganisations.items.map(item => item.orga_type);
+      this.TypeOrgaJoin=TypeList[0];
+
+
+
+      return this.idOrga
+      },
 
     handleSubmit() {
-      console.log("getId :", this.getId());
-      console.log("getInfo :", this.getInfoUser());
+      this.getId();
+      this.getInfoUser();
+    },
+    handleSubmit2() {
+      this.getInfoOrga();
+    },
+    handleSubmit3() {
     },
   },
 }

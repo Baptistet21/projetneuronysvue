@@ -10,6 +10,11 @@
       <h3 v-else>Aucun utilisateur trouvé</h3>
     </div>
   <form>
+    {{id}}
+    {{credit}}
+    {{orgaId}}
+    {{TypeRankUser}}
+
     <input type="number" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
     <button @click="updateOrgaCredits">Ajouter les credits</button>
   </form>
@@ -41,6 +46,8 @@ export default {
   },
 
   methods: {
+    /* fonction qui permet le changement de credits*/
+
     async updateOrgaCredits() {
       if (this.TypeRankUser === "admin") {
         const creditsValid = this.credit + this.creditUpdate;
@@ -55,6 +62,8 @@ export default {
         window.location.reload();
       }
     },
+    /* recup id user*/
+
     async getId() {
       const response = await API.graphql(
           graphqlOperation(query.getIdByName(this.email))
@@ -67,6 +76,8 @@ export default {
       this.TypeRankUser = RankList[0];
       return this.id;
     },
+    /* recup credit user*/
+
     async getCredit() {
       const response = await API.graphql(
           graphqlOperation(query.getIdByName(this.email))
@@ -77,6 +88,8 @@ export default {
       this.credit = creditList[0];
       return this.credit;
     },
+    /* recup id orga*/
+
     async getOrgaId() {
       const response = await API.graphql(
           graphqlOperation(query.getIdByName(this.email))

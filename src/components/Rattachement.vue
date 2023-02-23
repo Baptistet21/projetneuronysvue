@@ -27,6 +27,10 @@
         <h3 v-else>Aucune organisation trouvée</h3>
       </div>
     </ul>
+{{idUser}}
+    {{creditsUser}}
+    {{idOrgaUser}}
+    {{TypeOrgaUser}}
 
 
     <br>
@@ -73,6 +77,8 @@ export default {
   },
 
   methods: {
+    /* recup id user et orga type */
+
     async getId() {
       const response = await API.graphql(
           graphqlOperation(query.getIdByName(this.email))
@@ -85,28 +91,23 @@ export default {
       this.TypeOrgaUser = RankList[0];
       return this.idUser;
     },
-    async getCredit() {
+    /* recup info user avec credits, id orga*/
+
+    async getInfoUser() {
       const response = await API.graphql(
           graphqlOperation(query.getIdByName(this.email))
       );
-      const creditList = response.data.byEmail.items.map(
-          (item) => item.orga.credits
-      );
-      this.creditsOrga = creditList[0];
-      return this.creditsOrga;
-    },
-    async getOrgaId() {
-      const response = await API.graphql(
-          graphqlOperation(query.getIdByName(this.email))
-      );
+      const creditList = response.data.byEmail.items.map((item) => item.orga.credits);
+      this.creditsUser = creditList[0];
       const IdList = response.data.byEmail.items.map((item) => item.orga.id);
       this.idOrgaUser = IdList[0];
-      return this.idOrgaUser;
+
+      return this.creditsUser;
     },
+
     handleSubmit() {
       console.log("getId :", this.getId());
-      console.log("getCredit :", this.getCredit());
-      console.log("getIdOrga :", this.getOrgaId());
+      console.log("getInfo :", this.getInfoUser());
     },
   },
 }

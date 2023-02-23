@@ -1,13 +1,13 @@
 <template>
   <div class="Rattachement">
     <h1>Rattachement</h1>
-    <form>
-      <input type="email" placeholder="User Email" required>
+    <form @submit.prevent="handleSubmit">
+      <input type="email" placeholder="User Email" id="email" v-model="email" required>
       <button type="submit">OK</button>
     </form>
     <br>
     <form>
-      <input type="texte" placeholder="Organisation Name" required>
+      <input type="text" placeholder="Organisation Name" required>
       <button type="submit">OK</button>
     </form>
     <br>
@@ -15,12 +15,20 @@
       <button type="submit">Valider</button>
     </form>
     <br><br>
-    <users />
+    <div>
+      <Users v-if="this.idUser" :idUser="this.idUser" />
+      <h3 v-else>Aucun utilisateur trouvé</h3>
+    </div>
     <br>
     <h2>Organisation Join</h2>
     <ul>
-      <OrgaJoin/>
+      <div>
+        <OrgaJoin v-if="this.idOrga" :idUser="this.idOrga" />
+        <h3 v-else>Aucune organisation trouvée</h3>
+      </div>
     </ul>
+
+
     <br>
     <div class="button">
       <button>Confirmer</button>
@@ -31,15 +39,76 @@
 
 </template>
 
+
 <script>
-import users from "@/components/Users.vue";
+import {API, graphqlOperation} from "aws-amplify";
+import query from "@/Fonction_graphql/query";
+import Users from "@/components/Users.vue";
 import OrgaJoin from "@/components/OrgaJoin.vue";
 export default {
-  name: 'RattachementVue',
-  components:{
+  name: "RattachementVue",
+  components: {
     OrgaJoin,
-    users
-  }
+    Users
+  },
+  data() {
+    return {
+      email: "", /* email form */
+      orga: "", /* orga form */
+
+      /*User*/
+      idUser: "", /* resultat de getIdUser */
+      creditsUser:0, /* resultat de getCreditUser */
+      idOrgaUser:0,  /* resultat de getOrgaId */
+      TypeOrgaUser : "", /* resultat de getIdUser */
+
+      /*OrgaJoin*/
+      idOrga : 0, /* resultat de getOrganisationId */
+      creditsOrga : 0, /* resultat de getOrganisationId */
+      userOrgaList: {},/* resultat de getListUserByOrga */
+      TypeOrgaJoin: "", /* resultat de getOrganisationId */
+
+      validButton : "false", /* button validation */
+    };
+  },
+
+  methods: {
+    async getId() {
+      const response = await API.graphql(
+          graphqlOperation(query.getIdByName(this.email))
+      );
+      const idList = response.data.byEmail.items.map((item) => item.id);
+      const RankList = response.data.byEmail.items.map(
+          (item) => item.orga.orga_type
+      );
+      this.idUser = idList[0];
+      this.TypeOrgaUser = RankList[0];
+      return this.idUser;
+    },
+    async getCredit() {
+      const response = await API.graphql(
+          graphqlOperation(query.getIdByName(this.email))
+      );
+      const creditList = response.data.byEmail.items.map(
+          (item) => item.orga.credits
+      );
+      this.creditsOrga = creditList[0];
+      return this.creditsOrga;
+    },
+    async getOrgaId() {
+      const response = await API.graphql(
+          graphqlOperation(query.getIdByName(this.email))
+      );
+      const IdList = response.data.byEmail.items.map((item) => item.orga.id);
+      this.idOrgaUser = IdList[0];
+      return this.idOrgaUser;
+    },
+    handleSubmit() {
+      console.log("getId :", this.getId());
+      console.log("getCredit :", this.getCredit());
+      console.log("getIdOrga :", this.getOrgaId());
+    },
+  },
 }
 </script>
 

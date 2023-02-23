@@ -27,6 +27,7 @@
 import { API, graphqlOperation } from 'aws-amplify';
 import query from '../Fonction_graphql/query';
 
+
 export default {
   name: 'UsersVue',
   props: {

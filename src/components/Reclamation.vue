@@ -1,13 +1,14 @@
 <template>
   <div class="Reclamation">
-<h1>Reclamation</h1>
-<form @submit.prevent="handleSubmit">
+    <h1>Reclamation</h1>
+    <form @submit.prevent="handleSubmit">
   <input type="email" placeholder="User Email" id="email" v-model="email" required>
   <button type="submit">OK</button>
-</form>
-    <br>
-    <Users :idUser="id" />
-    <br>
+    </form>
+    <div>
+      <Users v-if="this.id" :idUser="this.id" />
+      <h3 v-else>Aucun utilisateur trouvé</h3>
+    </div>
   <form>
     <input type="number" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
     <button @click="updateOrgaCredits">Ajouter les credits</button>
@@ -30,12 +31,12 @@ export default {
   },
   data() {
     return {
-      email: "",
-      creditUpdate: 0,
-      credit: 0,
-      id: "",
-      orgaId: "",
-      TypeRankUser: "",
+      email: "", /* email form */
+      creditUpdate: 0, /* credits form */
+      credit: 0, /* credits orga */
+      id: "", /* id user */
+      orgaId: "",  /* id orga */
+      TypeRankUser: "",/* rank user */
     };
   },
 

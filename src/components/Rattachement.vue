@@ -33,6 +33,7 @@
     {{idOrga}}
     {{creditsOrga}}
     {{TypeOrgaJoin}}
+    {{userOrgaList}}
     <br>
     <div class="button">
       <button>Confirmer</button>
@@ -120,12 +121,16 @@ export default {
       /*recup Type orga join*/
       const TypeList = response.data.listOrganisations.items.map(item => item.orga_type);
       this.TypeOrgaJoin=TypeList[0];
-
-
-
       return this.idOrga
       },
+    /* recuperer list user par orga*/
 
+    async getListUserByOrga() {
+      const response = await API.graphql(graphqlOperation(query.getListUserByIdOrga(this.idOrga)));
+      const userList = response.data.usersByOrga_idAndPseudo.items.map(item => item.orga.users_id);
+      this.userOrgaList =userList[0]
+      return this.userOrgaList
+    },
     handleSubmit() {
       this.getId();
       this.getInfoUser();
@@ -134,6 +139,7 @@ export default {
       this.getInfoOrga();
     },
     handleSubmit3() {
+      this.getListUserByOrga()
     },
   },
 }

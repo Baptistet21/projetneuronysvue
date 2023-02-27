@@ -14,15 +14,10 @@
       <Users v-if="this.id" :idUser="this.id" />
       <h3 v-else>Aucun utilisateur trouvé</h3>
     </div>
-    {{id}}
-    {{credit}}
-    {{orgaId}}
-    {{TypeOrga}}
-
 
     <h5>{{creditUpdate}} crédits vont être ajouté à l'organisation team de {{email}}</h5>
-    <form>
-      <button>Confirmer</button>
+    <form @submit.prevent="updateOrga">
+      <button type="submit">Confirmer</button>
     </form>
  </div>
 
@@ -34,6 +29,7 @@
 <script>
 import {API, graphqlOperation} from "aws-amplify";
 import query from "@/Fonction_graphql/query";
+import mutation from "@/Fonction_graphql/mutation";
 import Users from "@/components/Users.vue";
 export default {
   name: "UpgradeVue",
@@ -46,14 +42,40 @@ export default {
       creditUpdate: 0, /* credits form */
 
       /*User*/
-      id: "", /* resultat de getIdUser */
-      credit:0, /* resultat de getCreditUser */
+      id: "", /* resultat de getInfoUser */
+      credit:0, /* resultat de getInfoUser */
       orgaId:0,  /* resultat de getOrgaId */
-      TypeOrga: "", /* resultat de getIdUser */
+      TypeOrga: "", /* resultat de getInfoUser */
+      RankUser: "", /* resultat de getInfoUser */
+
     };
   },
 
   methods: {
+    async updateOrga () {
+      if(this.RankUser === "admin"){
+        if (this.TypeOrga !== "team"){
+          let ValidCredits = this.credit + this.creditUpdate
+          await API.graphql(graphqlOperation(mutation.updateCredits(this.orgaId,ValidCredits)));
+          await API.graphql(graphqlOperation(mutation.updateTypeOrga(this.orgaId,"team")));
+          window.alert(this.email + " appartient maintenant à une organisation team avec " + ValidCredits + " credits.")
+          window.location.reload()
+      }
+        else{
+          window.alert(this.email + " appartient déjà à une organisation team.")
+          window.location.reload()
+        }
+
+
+    }
+      else{
+        window.alert(this.email + " n'est pas admin dans son organisation. ")
+        window.location.reload()
+      }
+    },
+
+
+
     /* recup id user et orga type */
 
     async getId() {
@@ -78,15 +100,17 @@ export default {
       this.credit = creditList[0];
       const IdList = response.data.byEmail.items.map((item) => item.orga.id);
       this.orgaId = IdList[0];
+      const RankList = response.data.byEmail.items.map((item) => item.orga_rank);
+      this.RankUser = RankList[0];
 
       return this.credit;
     },
 
     handleSubmit() {
-      console.log("getId :", this.getId());
+      this.getId()
     },
     handleSubmit2() {
-      console.log("getInfo :", this.getInfoUser());
+      this.getInfoUser()
     },
   },
 }

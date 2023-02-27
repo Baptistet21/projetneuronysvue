@@ -49,11 +49,11 @@ export default {
         await API.graphql(
             graphqlOperation(mutation.updateCredits(this.orgaId,creditsValid))
         );
-        window.alert(this.email + " a maintenant " + creditsValid + " credits");
+        window.alert(this.email + " a maintenant " + creditsValid + " credits.");
         window.location.reload();
 
       } else {
-        window.alert(this.email + " n'est pas admin ");
+        window.alert(this.email + " n'est pas admin.");
         window.location.reload();
       }
     },

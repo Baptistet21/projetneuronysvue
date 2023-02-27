@@ -77,12 +77,12 @@ export default {
     async updateOrganisationUser(){
       if(this.validButton === "true"){
          if (this.TypeOrgaJoin !== "team"){
-          window.alert("L'organisation de "+this.EmailAdmin + " n'est pas une organisation team")
+          window.alert("L'organisation de "+this.EmailAdmin + " n'est pas une organisation team.")
           window.location.reload()
 
         }
         else if (this.TypeOrgaUser !== "solo"){
-          window.alert(this.email + " appartient déjà à une organisation team")
+          window.alert(this.email + " appartient déjà à une organisation team.")
           window.location.reload()
 
         }
@@ -101,7 +101,7 @@ export default {
       }
        }
       else{
-        window.alert("Vous devez valider avant de confirmer")
+        window.alert("Vous devez valider avant de confirmer.")
 
 
       }
@@ -195,12 +195,12 @@ export default {
 
     handleSubmit3() {
       if(this.RankUserAdmin === "admin"){
-        window.alert(this.EmailAdmin + " est admin dans son organisation")
+        window.alert(this.EmailAdmin + " est admin dans son organisation.")
         this.getListUserByOrga()
         this.validButton = "true"
       }
       else{
-        window.alert(this.EmailAdmin + " n'est pas admin dans son organisation")
+        window.alert(this.EmailAdmin + " n'est pas admin dans son organisation.")
         window.location.reload()
       }
 

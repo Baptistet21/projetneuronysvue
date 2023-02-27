@@ -20,7 +20,7 @@
     {{TypeOrga}}
 
 
-    <h3>{{creditUpdate}} crédits vont être ajouté à l'organisation team de {{email}}</h3>
+    <h5>{{creditUpdate}} crédits vont être ajouté à l'organisation team de {{email}}</h5>
     <form>
       <button>Confirmer</button>
     </form>

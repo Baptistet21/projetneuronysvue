@@ -1,6 +1,4 @@
-* {
 
-}
 ul {
     list-style-type: none;
     margin: 0;
@@ -32,11 +30,7 @@ li a:hover:not(.active) {
     font-size: 80%;
 }
 
-li a.active {
-    color: white;
-    background-color: #04AA6D;
-    font-size: 80%;
-}
+
 
 h2 {
     text-align: left;
@@ -44,7 +38,7 @@ h2 {
     color: #e88b01;
     font-family: fantasy ;
     font-weight: 300;
-    font-size: 80%;
+    font-size: 100%;
 }
 
 h1{
@@ -60,7 +54,12 @@ h3 {
     color: #e88b01;
     font-family: fantasy ;
     font-weight: 100;
-    font-size: 90%;
+}
+h5 {
+    text-align: center;
+    color: #e88b01;
+    font-family: fantasy ;
+    font-weight: 100;
 }
 
 div.Bar {
@@ -69,12 +68,10 @@ div.Bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 80%;
 }
 
 form{
     text-align: center;
-    font-size: 80%;
 }
 
 div.button{
@@ -82,14 +79,14 @@ div.button{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 80%;}
+}
 
 form {
     transform: scale(0.8);
 }
 
 p{
-    font-size: 80%;
+    font-size: 90%;
 }
 
 h4{

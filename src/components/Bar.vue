@@ -3,6 +3,7 @@
     <h4>Bonjour, {{ currentUser.attributes.email}} </h4>
     <amplify-sign-out/>
   </div>
+
   <Nav/>
 
 
@@ -13,6 +14,7 @@
 
 import './Css.css'
 import Nav from "../components/Nav.vue";
+
 
 
 

@@ -2,7 +2,17 @@ import {createApp} from "vue"
 import App from "./App.vue"
 import {applyPolyfills, defineCustomElements} from '@aws-amplify/ui-components/loader';
 import router from "@/router";
-/* import 'quasar/dist/quasar.css'*/
+/* import 'quasar/dist/quasar.css'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+*/
+
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
+
+
+
 
 
 

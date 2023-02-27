@@ -15,7 +15,7 @@
 <script>
 import {graphqlOperation} from "@aws-amplify/api-graphql";
 import {API} from "aws-amplify";
-import query from "../Fonction_graphql/query";
+import query from "../../Fonction_graphql/query";
 
 export default {
   name: "OrgaJoin",
@@ -43,7 +43,7 @@ export default {
 
   methods: {
     async getOrganisation(){
-      const response = await API.graphql(graphqlOperation(query.getOrgaByID(this.id)));
+      const response = await API.graphql(graphqlOperation(query.getUserOrga(this.id)));
       this.orgaJoin = response.data.listOrganisations.items
       return this.orgaJoin
     }

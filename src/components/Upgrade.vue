@@ -21,10 +21,10 @@
 
 
     <h3>{{creditUpdate}} crédits vont être ajouté à l'organisation team de {{email}}</h3>
-    <div class="button">
+    <form>
       <button>Confirmer</button>
-    </div>
-  </div>
+    </form>
+ </div>
 
 
 

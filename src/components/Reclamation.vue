@@ -10,13 +10,8 @@
       <h3 v-else>Aucun utilisateur trouvé</h3>
     </div>
   <form>
-    {{id}}
-    {{credit}}
-    {{orgaId}}
-    {{TypeRankUser}}
-
     <input type="number" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
-    <button @click="updateOrgaCredits">Ajouter les credits</button>
+    <button @click.prevent="updateOrgaCredits">Ajouter les credits</button>
   </form>
   </div>
 
@@ -54,11 +49,11 @@ export default {
         await API.graphql(
             graphqlOperation(mutation.updateCredits(this.orgaId,creditsValid))
         );
-        window.alert(this.name + " a maintenant " + creditsValid + " credits");
+        window.alert(this.email + " a maintenant " + creditsValid + " credits");
         window.location.reload();
 
       } else {
-        window.alert(this.name + " n'est pas admin ");
+        window.alert(this.email + " n'est pas admin ");
         window.location.reload();
       }
     },

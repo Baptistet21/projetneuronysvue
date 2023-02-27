@@ -15,7 +15,6 @@
       <h3 v-else>Aucun utilisateur trouvé</h3>
     </div>
 
-    <h5>{{creditUpdate}} crédits vont être ajouté à l'organisation team de {{email}}</h5>
     <form @submit.prevent="updateOrga">
       <button type="submit">Confirmer</button>
     </form>
@@ -111,8 +110,11 @@ export default {
     },
     handleSubmit2() {
       this.getInfoUser()
+      window.alert(this.creditUpdate + " crédits vont être ajouté à l'organisation team de " + this.email +", une fois validé");
+
     },
   },
+
 }
 </script>
 

@@ -28,6 +28,8 @@ li a {
 li a:hover:not(.active) {
     background-color: #ddd;
     font-size: 80%;
+    text-decoration: none;
+
 }
 
 
@@ -91,4 +93,38 @@ p{
 
 h4{
     font-size: 80%;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #537BE5;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #FFFFFF;
+    color: #537BE5;
+}
+
+input[type=text], input[type=email], input[type=number] {
+    width: 35%;
+    padding: 10px 14px;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border: 3px solid #537BE5;
+    border-radius: 2px;
+    font-size: 15px;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=number]:focus {
+    border-color: #e88b01;
+    outline: none;
 }

@@ -11,7 +11,7 @@
     </div>
   <form>
     <input type="number" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
-    <button @click.prevent="updateOrgaCredits">Ajouter les credits</button>
+    <button class="button" @click.prevent="updateOrgaCredits">Ajouter</button>
   </form>
   </div>
 

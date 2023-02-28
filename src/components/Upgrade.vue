@@ -16,7 +16,7 @@
     </div>
 
     <form @submit.prevent="updateOrga">
-      <button type="submit">Confirmer</button>
+      <button class="button" type="submit">Confirmer</button>
     </form>
  </div>
 

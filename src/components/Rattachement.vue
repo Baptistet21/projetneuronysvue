@@ -3,14 +3,14 @@
     <h1>Rattachement</h1>
     <form @submit.prevent="handleSubmit">
       <input class="form-input" type="email" placeholder="User Email" id="email" v-model="email" required>
-      <button type="submit">OK</button>
+      <button type="submit" class="button">OK</button>
     </form>
     <form @submit.prevent="handleSubmit2">
       <input type="email" placeholder="Email Admin Organisation" id="orga" v-model="EmailAdmin" required>
-      <button type="submit">OK</button>
+      <button type="submit" class="button">OK</button>
     </form>
     <form @submit.prevent="handleSubmit3">
-      <button type="submit">Valider</button>
+      <button type="submit" class="buttonForm">Valider</button>
     </form>
     <br><br>
     <div>
@@ -26,7 +26,7 @@
       </div>
     <br>
     <form @submit.prevent="updateOrganisationUser">
-        <button class="button" type="submit">Confirmer</button>
+        <button class="buttonForm2" type="submit">Confirmer</button>
     </form>
   </div>
 

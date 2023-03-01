@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>User :</h2>
+  <div class="User">
+    <h6>User :</h6>
     <ul>
       <li :key="user.id">
         <h4>email: {{ user.email }}</h4>
@@ -9,7 +9,7 @@
       </li>
     </ul>
     <br />
-    <h2>Organisation :</h2>
+    <h6>Organisation :</h6>
     <ul>
       <li :key="orga.id">
         <h4>Organisation name: {{ orga.name }}</h4>
@@ -64,3 +64,40 @@ export default {
   },
 };
 </script>
+<style>
+.User ul {
+  list-style: none;
+  padding: 0;
+}
+
+.User li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 0.25rem;
+}
+
+.User h6 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  margin-left: 5%;
+  color: #e88b01;
+  font-family: fantasy ;
+}
+
+.User h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+
+}
+
+.User p {
+  margin: 0;
+}
+
+.User li:nth-child(even) {
+  background-color: #e5e5e5;
+}
+
+</style>

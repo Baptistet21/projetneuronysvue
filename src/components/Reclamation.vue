@@ -3,7 +3,7 @@
     <h1>Reclamation</h1>
     <form @submit.prevent="handleSubmit">
   <input type="email" placeholder="User Email" id="email" v-model="email" required>
-  <button type="submit">OK</button>
+  <button class="button" type="submit">OK</button>
     </form>
     <div>
       <Users v-if="this.id" :idUser="this.id" />
@@ -11,7 +11,7 @@
     </div>
   <form>
     <input type="number" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
-    <button class="button" @click.prevent="updateOrgaCredits">Ajouter</button>
+    <button class="buttonForm2" @click.prevent="updateOrgaCredits">Ajouter</button>
   </form>
   </div>
 

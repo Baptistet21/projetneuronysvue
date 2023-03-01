@@ -3,12 +3,12 @@
     <h1>Upgrade</h1>
     <form @submit.prevent="handleSubmit">
       <input type="email" placeholder="User Email" id="email" v-model="email" required>
-      <button type="submit">OK</button>
+      <button type="submit" class="button">OK</button>
     </form>
     <br>
     <form @submit.prevent="handleSubmit2">
       <input type="number" placeholder="Credits" v-model="creditUpdate" required>
-      <button type="submit">Ajouter les credits</button>
+      <button type="submit" class="button">Ajouter les credits</button>
     </form>
     <div>
       <Users v-if="this.id" :idUser="this.id" />
@@ -16,7 +16,7 @@
     </div>
 
     <form @submit.prevent="updateOrga">
-      <button class="button" type="submit">Confirmer</button>
+      <button class="buttonForm2" type="submit">Confirmer</button>
     </form>
  </div>
 

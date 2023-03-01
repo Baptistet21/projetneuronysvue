@@ -37,10 +37,11 @@ li a:hover:not(.active) {
 h2 {
     text-align: left;
     margin-left: 5%;
-    color: #e88b01;
+    color: #537BE5;
     font-family: fantasy ;
     font-weight: 300;
-    font-size: 100%;
+    font-size: 1.3rem;
+
 }
 
 h1{
@@ -74,45 +75,10 @@ div.Bar {
 
 form{
     text-align: center;
-}
-
-div.button{
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-form {
     transform: scale(0.8);
+
 }
 
-p{
-    font-size: 90%;
-}
-
-h4{
-    font-size: 80%;
-}
-
-.button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: #537BE5;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 18px;
-    padding: 10px;
-    width: 150px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-}
-
-.button:hover {
-    background-color: #FFFFFF;
-    color: #537BE5;
-}
 
 input[type=text], input[type=email], input[type=number] {
     width: 35%;
@@ -127,4 +93,58 @@ input[type=text], input[type=email], input[type=number] {
 input[type=text]:focus, input[type=email]:focus, input[type=number]:focus {
     border-color: #e88b01;
     outline: none;
+}
+
+.buttonForm {
+    background-color: #0077cc;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.buttonForm2 {
+    background-color: #0077cc; /* couleur de fond */
+    border: 2px solid #0077cc; /* bordure de couleur assortie */
+    color: white; /* couleur du texte */
+    padding: 10px 20px; /* taille du rembourrage (haut/bas gauche/droite) */
+    text-align: center; /* alignement horizontal du texte */
+    text-decoration: none; /* supprime les soulignements du texte */
+    display: inline-block; /* affiche le bouton en tant que bloc en ligne */
+    font-size: 18px; /* taille de police */
+    margin: 10px; /* marges (haut/bas gauche/droite) */
+    cursor: pointer; /* curseur de la souris au survol */
+    border-radius: 5px; /* arrondi les bords du bouton */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* effet de transition fluide */
+}
+
+.buttonForm2:hover {
+    background-color: #fff; /* changement de couleur de fond au survol */
+    color: #0077cc; /* changement de couleur du texte au survol */
+}
+
+.button {
+    background-color: #e88b01; /* couleur de fond */
+    border: none; /* supprime les bordures */
+    color: white; /* couleur du texte */
+    padding: 10px 20px; /* taille du rembourrage (haut/bas gauche/droite) */
+    text-align: center; /* alignement horizontal du texte */
+    text-decoration: none; /* supprime les soulignements du texte */
+    display: inline-block; /* affiche le bouton en tant que bloc en ligne */
+    font-size: 16px; /* taille de police */
+    margin: 10px; /* marges (haut/bas gauche/droite) */
+    cursor: pointer; /* curseur de la souris au survol */
+    border-radius: 50px; /* arrondi les bords du bouton */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* ajoute une ombre légère */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* effet de transition fluide */
+}
+
+.button:hover {
+    transform: translateY(-2px); /* effet de levage au survol */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* effet d'ombre plus prononcé au survol */
 }

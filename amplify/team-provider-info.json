@@ -17,6 +17,12 @@
       },
       "api": {
         "projetneuronysvue": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2dvz7arq0elmo",
+          "type": "manual"
+        }
       }
     }
   }

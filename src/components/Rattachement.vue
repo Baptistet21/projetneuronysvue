@@ -2,11 +2,11 @@
   <div class="Rattachement">
     <h1>Rattachement</h1>
     <form @submit.prevent="handleSubmit">
-      <input class="form-input" type="email" placeholder="User Email" id="email" v-model="email" required>
+      <input  class="input" type="email" placeholder="User Email" id="email" v-model="email" required>
       <button type="submit" class="button">OK</button>
     </form>
     <form @submit.prevent="handleSubmit2">
-      <input type="email" placeholder="Email Admin Organisation" id="orga" v-model="EmailAdmin" required>
+      <input type="email" class="input" placeholder="Email Admin Organisation" id="orga" v-model="EmailAdmin" required>
       <button type="submit" class="button">OK</button>
     </form>
     <form @submit.prevent="handleSubmit3">

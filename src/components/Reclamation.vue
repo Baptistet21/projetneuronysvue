@@ -2,7 +2,7 @@
   <div class="Reclamation">
     <h1>Reclamation</h1>
     <form @submit.prevent="handleSubmit">
-  <input type="email" placeholder="User Email" id="email" v-model="email" required>
+  <input type="email" class="input" placeholder="User Email" id="email" v-model="email" required>
   <button class="button" type="submit">OK</button>
     </form>
     <div>
@@ -10,8 +10,8 @@
       <h3 v-else>Aucun utilisateur trouvé</h3>
     </div>
   <form>
-    <input type="number" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
-    <button class="buttonForm2" @click.prevent="updateOrgaCredits">Ajouter</button>
+    <input type="number" class="inputCredits" placeholder="Credits" id="creditsUpdate" v-model="creditUpdate">
+    <button class="buttonForm2" @click.prevent="updateOrgaCredits">Ajouter les credits</button>
   </form>
   </div>
 

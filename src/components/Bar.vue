@@ -3,7 +3,6 @@
     <h4>Bonjour, {{ currentUser.attributes.email}} </h4>
     <amplify-sign-out/>
   </div>
-
   <Nav/>
 
 

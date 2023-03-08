@@ -1,15 +1,17 @@
 <template>
   <div class="Upgrade">
     <h1>Upgrade</h1>
+    <div class="formulaire">
     <form @submit.prevent="handleSubmit">
-      <input type="email" placeholder="User Email" id="email" v-model="email" required>
-      <button type="submit" class="button">OK</button>
+      <input type="email" class="input" placeholder="User Email" id="email" v-model="email" required>
+      <button type="submit"  class="button">OK</button>
     </form>
     <br>
     <form @submit.prevent="handleSubmit2">
-      <input type="number" placeholder="Credits" v-model="creditUpdate" required>
-      <button type="submit" class="button">Ajouter les credits</button>
+      <input type="number" class="inputCredits" placeholder="Credits" v-model="creditUpdate" required>
+      <button type="submit"  class="buttonForm2">Ajouter les credits</button>
     </form>
+    </div>
     <div>
       <Users v-if="this.id" :idUser="this.id" />
       <h3 v-else>Aucun utilisateur trouvé</h3>
@@ -107,10 +109,16 @@ export default {
 
     handleSubmit() {
       this.getId()
+      this.getInfoUser()
+
     },
     handleSubmit2() {
-      this.getInfoUser()
-      window.alert(this.creditUpdate + " crédits vont être ajouté à l'organisation team de " + this.email +", une fois validé");
+      if (this.RankUser === "admin"){
+        window.alert(this.creditUpdate + " crédits vont être ajouté à l'organisation team de " + this.email +", une fois validé"); }
+      else {
+        window.alert(this.email + " n'est pas admin dans son organisation. ")
+        window.location.reload()
+      }
 
     },
   },
